@@ -6,7 +6,7 @@
       "name": "Git Helpers",
       "description": "Git aliases and clone helpers for multiple remotes with SSH key management",
       "version": "1.0.0",
-      "url": "https://raw.githubusercontent.com/daevski/bashrc-modules/main/git.sh",
+      "url": "https://raw.githubusercontent.com/daevski/bashrc-modules/main/modules/git.sh",
       "category": "version-control",
       "dependencies": ["ssh-agent"],
       "exports": {
@@ -20,7 +20,7 @@
       "name": "Docker Utils",
       "description": "Docker cleanup and management functions",
       "version": "1.0.0",
-      "url": "https://raw.githubusercontent.com/daevski/bashrc-modules/main/docker.sh",
+      "url": "https://raw.githubusercontent.com/daevski/bashrc-modules/main/modules/docker.sh",
       "category": "containers",
       "dependencies": [],
       "exports": {
@@ -34,7 +34,7 @@
       "name": "Python Development",
       "description": "Python development helpers for poetry, pytest, and coverage",
       "version": "1.0.0",
-      "url": "https://raw.githubusercontent.com/daevski/bashrc-modules/main/python.sh",
+      "url": "https://raw.githubusercontent.com/daevski/bashrc-modules/main/modules/python.sh",
       "category": "development",
       "dependencies": [],
       "exports": {
@@ -48,7 +48,7 @@
       "name": "SSH Agent Manager",
       "description": "Persistent SSH agent management with key loading",
       "version": "1.0.0",
-      "url": "https://raw.githubusercontent.com/daevski/bashrc-modules/main/ssh-agent.sh",
+      "url": "https://raw.githubusercontent.com/daevski/bashrc-modules/main/modules/ssh-agent.sh",
       "category": "security",
       "dependencies": [],
       "exports": {
@@ -62,7 +62,7 @@
       "name": "AWS Helpers",
       "description": "AWS CLI shortcuts and utilities",
       "version": "1.0.0",
-      "url": "https://raw.githubusercontent.com/daevski/bashrc-modules/main/aws.sh",
+      "url": "https://raw.githubusercontent.com/daevski/bashrc-modules/main/modules/aws.sh",
       "category": "cloud",
       "dependencies": [],
       "exports": {
@@ -76,7 +76,7 @@
       "name": "Audio Switching",
       "description": "Audio device switching utilities",
       "version": "1.0.0",
-      "url": "https://raw.githubusercontent.com/daevski/bashrc-modules/main/audio-switching.sh",
+      "url": "https://raw.githubusercontent.com/daevski/bashrc-modules/main/modules/audio-switching.sh",
       "category": "system",
       "dependencies": [],
       "exports": {
@@ -90,7 +90,7 @@
       "name": "GitHub CLI Tools",
       "description": "GitHub CLI helper functions",
       "version": "1.0.0",
-      "url": "https://raw.githubusercontent.com/daevski/bashrc-modules/main/gh-cli-tool.sh",
+      "url": "https://raw.githubusercontent.com/daevski/bashrc-modules/main/modules/gh-cli-tool.sh",
       "category": "version-control",
       "dependencies": [],
       "exports": {
@@ -104,7 +104,7 @@
       "name": "OpenSSL File Encryption",
       "description": "File encryption and decryption using OpenSSL",
       "version": "1.0.0",
-      "url": "https://raw.githubusercontent.com/daevski/bashrc-modules/main/openssl_file_encryption.sh",
+      "url": "https://raw.githubusercontent.com/daevski/bashrc-modules/main/modules/openssl_file_encryption.sh",
       "category": "security",
       "dependencies": [],
       "exports": {
@@ -118,7 +118,7 @@
       "name": "Pyenv Setup",
       "description": "Pyenv initialization and configuration",
       "version": "1.0.0",
-      "url": "https://raw.githubusercontent.com/daevski/bashrc-modules/main/pyenv.sh",
+      "url": "https://raw.githubusercontent.com/daevski/bashrc-modules/main/modules/pyenv.sh",
       "category": "development",
       "dependencies": [],
       "exports": {
@@ -132,7 +132,7 @@
       "name": "System Utilities",
       "description": "General system utility functions and aliases",
       "version": "1.0.0",
-      "url": "https://raw.githubusercontent.com/daevski/bashrc-modules/main/system.sh",
+      "url": "https://raw.githubusercontent.com/daevski/bashrc-modules/main/modules/system.sh",
       "category": "system",
       "dependencies": [],
       "exports": {
