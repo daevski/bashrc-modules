@@ -1,6 +1,6 @@
 #!/bin/bash
 # Module: git
-# Version: 0.2.0
+# Version: 0.3.0
 # Description: Git aliases and clone helpers for multiple remotes with SSH key management
 # BashMod Dependencies: ssh-agent@0.2.0
 
@@ -58,26 +58,48 @@ ssh_load_key_for_url() {
     ssh-add "$key_file"
 }
 
-function clone-eis () {
-    if [ -z ${1} ]; then
-        echo "Usage: clone-eis <repo-name>"
-    echo "Example: clone-eis platform.shared.bookjacket-image-resolver"
-    echo "         -> git@eis:EBSCOIS/platform.shared.bookjacket-image-resolver.git"
-    else
-    local git_url="git@eis:EBSCOIS/${1}.git"
-    ssh_load_key_for_url "$git_url" && git clone "$git_url" ~/development/eis/${1}
+function clone-repo () {
+    if [ -z "$1" ] || [ -z "$2" ]; then
+        echo "Usage: clone-repo <owner> <repo-name>"
+        echo "Examples:"
+        echo "  clone-repo EBSCOIS platform.shared.bookjacket-image-resolver"
+        echo "    -> git@ebscois:EBSCOIS/platform.shared.bookjacket-image-resolver.git"
+        echo "    -> ~/development/platform.shared.bookjacket-image-resolver"
+        echo ""
+        echo "  clone-repo daevski my-personal-project"
+        echo "    -> git@daevski:daevski/my-personal-project.git"
+        echo "    -> ~/development/my-personal-project"
+        return 1
     fi
+
+    local owner="$1"
+    local repo_name="$2"
+    local ssh_host=$(echo "$owner" | tr '[:upper:]' '[:lower:]')
+
+    local git_url="git@${ssh_host}:${owner}/${repo_name}.git"
+    local clone_path="~/development/${repo_name}"
+
+    ssh_load_key_for_url "$git_url" && git clone "$git_url" "$clone_path"
+}
+
+function clone-eis () {
+    if [ -z "$1" ]; then
+        echo "Usage: clone-eis <repo-name>"
+        echo "Example: clone-eis platform.shared.bookjacket-image-resolver"
+        echo "         -> git@eis:EBSCOIS/platform.shared.bookjacket-image-resolver.git"
+        return 1
+    fi
+    clone-repo eis EBSCOIS "$1"
 }
 
 function clone-daevski () {
-    if [ -z ${1} ]; then
+    if [ -z "$1" ]; then
         echo "Usage: clone-daevski <repo-name>"
-    echo "Example: clone-daevski my-personal-project"
-    echo "         -> git@daevski:daevski/my-personal-project.git"
-    else
-    local git_url="git@daevski:daevski/${1}.git"
-    ssh_load_key_for_url "$git_url" && git clone "$git_url" ~/development/daevski/${1}
+        echo "Example: clone-daevski my-personal-project"
+        echo "         -> git@daevski:daevski/my-personal-project.git"
+        return 1
     fi
+    clone-repo daevski daevski "$1"
 }
 
 function git-del-branch() {
