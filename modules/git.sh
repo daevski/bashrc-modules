@@ -1,5 +1,8 @@
 #!/bin/bash
-# ~/.bashrc.d/git.sh
+# Module: git
+# Version: 0.2.0
+# Description: Git aliases and clone helpers for multiple remotes with SSH key management
+# Dependencies: ssh-agent
 
 alias gitaddcommit='git add -A . && git commit -m '
 
@@ -7,7 +10,7 @@ alias gitaddcommit='git add -A . && git commit -m '
 ssh_load_key_for_url() {
     local git_url="$1"
     local ssh_host
-    local identity_file
+    local key_file
 
     if [ -z "$git_url" ]; then
         echo "No Git URL provided"
@@ -30,31 +33,29 @@ ssh_load_key_for_url() {
             ;;
     esac
 
-    # Look up the identity file for this host in SSH config
-    identity_file=$(ssh -G "$ssh_host" 2>/dev/null | grep -E '^identityfile ' | head -1 | awk '{print $2}')
-
-    # Expand tilde to home directory
-    identity_file="${identity_file/#\~/$HOME}"
-
-    if [ ! -f "$identity_file" ]; then
-        echo "Could not find identity file for host: $ssh_host"
-        return 1
-    fi
-
-    # Check if the key is already loaded
-    if ! type is_key_loaded &>/dev/null; then
-        echo "Error: is_key_loaded function not found"
+    # Check if get_ssh_key_for_host is available from ssh-agent.sh
+    if ! type get_ssh_key_for_host &>/dev/null; then
+        echo "Error: get_ssh_key_for_host function not found"
         echo "Please ensure ~/.bashrc.d/ssh-agent.sh is loaded"
         return 1
     fi
 
-    if is_key_loaded "$identity_file"; then
+    # Use the shared function from ssh-agent.sh
+    key_file=$(get_ssh_key_for_host "$ssh_host")
+
+    if [ -z "$key_file" ]; then
+        echo "Could not find SSH key for host: $ssh_host"
+        return 1
+    fi
+
+    # Check if the key is already loaded
+    if is_key_loaded "$key_file"; then
         return 0
     fi
 
     # Load the specific key
-    echo "Loading SSH key for $ssh_host: $(basename "$identity_file")"
-    ssh-add "$identity_file"
+    echo "Loading SSH key for $ssh_host: $(basename "$key_file")"
+    ssh-add "$key_file"
 }
 
 function clone-eis () {
