@@ -5,13 +5,22 @@
       "id": "git",
       "name": "Git Helpers",
       "description": "Git aliases and clone helpers for multiple remotes with SSH key management",
-      "version": "0.2.0",
+      "version": "0.3.0",
       "url": "https://raw.githubusercontent.com/daevski/bashrc-modules/main/modules/git.sh",
       "category": "version-control",
-      "dependencies": ["ssh-agent@0.2.0"],
+      "dependencies": [
+        "ssh-agent@0.2.0"
+      ],
       "exports": {
-        "aliases": ["gitaddcommit"],
-        "functions": ["ssh_load_key_for_url", "clone-eis", "clone-daevski", "git-del-branch"],
+        "aliases": [
+          "gitaddcommit"
+        ],
+        "functions": [
+          "ssh_load_key_for_url",
+          "clone-eis",
+          "clone-daevski",
+          "git-del-branch"
+        ],
         "variables": []
       }
     },
@@ -25,7 +34,10 @@
       "dependencies": [],
       "exports": {
         "aliases": [],
-        "functions": ["docker-nukec", "docker-purge-all"],
+        "functions": [
+          "docker-nukec",
+          "docker-purge-all"
+        ],
         "variables": []
       }
     },
@@ -39,7 +51,13 @@
       "dependencies": [],
       "exports": {
         "aliases": [],
-        "functions": ["cdpydev", "poetryreq", "pycov", "pycov-all", "coverage-check"],
+        "functions": [
+          "cdpydev",
+          "poetryreq",
+          "pycov",
+          "pycov-all",
+          "coverage-check"
+        ],
         "variables": []
       }
     },
@@ -53,8 +71,18 @@
       "dependencies": [],
       "exports": {
         "aliases": [],
-        "functions": ["get_git_ssh_key", "is_key_loaded", "ssh_load_git_key", "get_ssh_key_for_host", "ssh", "git"],
-        "variables": ["SSH_AUTH_SOCK", "SSH_AGENT_PID"]
+        "functions": [
+          "get_git_ssh_key",
+          "is_key_loaded",
+          "ssh_load_git_key",
+          "get_ssh_key_for_host",
+          "ssh",
+          "git"
+        ],
+        "variables": [
+          "SSH_AUTH_SOCK",
+          "SSH_AGENT_PID"
+        ]
       }
     },
     {
@@ -64,11 +92,19 @@
       "version": "0.1.0",
       "url": "https://raw.githubusercontent.com/daevski/bashrc-modules/main/modules/ssh-host-manager.sh",
       "category": "security",
-      "dependencies": ["ssh-agent@0.2.0"],
+      "dependencies": [
+        "ssh-agent@0.2.0"
+      ],
       "exports": {
         "aliases": [],
-        "functions": ["ssh-host-add", "ssh-host-remove", "ssh-host-list"],
-        "variables": ["SSH_CONFIG"]
+        "functions": [
+          "ssh-host-add",
+          "ssh-host-remove",
+          "ssh-host-list"
+        ],
+        "variables": [
+          "SSH_CONFIG"
+        ]
       }
     },
     {
