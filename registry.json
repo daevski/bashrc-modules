@@ -8,7 +8,7 @@
       "version": "0.2.0",
       "url": "https://raw.githubusercontent.com/daevski/bashrc-modules/main/modules/git.sh",
       "category": "version-control",
-      "dependencies": ["ssh-agent"],
+      "dependencies": ["ssh-agent@0.2.0"],
       "exports": {
         "aliases": ["gitaddcommit"],
         "functions": ["ssh_load_key_for_url", "clone-eis", "clone-daevski", "git-del-branch"],
@@ -64,7 +64,7 @@
       "version": "0.1.0",
       "url": "https://raw.githubusercontent.com/daevski/bashrc-modules/main/modules/ssh-host-manager.sh",
       "category": "security",
-      "dependencies": ["ssh-agent"],
+      "dependencies": ["ssh-agent@0.2.0"],
       "exports": {
         "aliases": [],
         "functions": ["ssh-host-add", "ssh-host-remove", "ssh-host-list"],

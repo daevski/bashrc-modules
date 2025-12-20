@@ -4,17 +4,17 @@ Personal collection of modular bash configuration files for managing development
 
 ## Usage
 
-These modules are designed to be used with [bash-mods](https://github.com/user/bash-mods), a TUI package manager for bash configurations.
+These modules are designed to be used with [bashmod](https://github.com/user/bashmod), a TUI package manager for bash configurations.
 
-### Install bash-mods
+### Install bashmod
 
 ```bash
-pipx install git+https://github.com/user/bash-mods.git
+pipx install git+https://github.com/user/bashmod.git
 ```
 
 ### Configure
 
-Create `~/.config/bash-mods/config.toml`:
+Create `~/.config/bashmod/config.toml`:
 
 ```toml
 github_user = "daevski"
@@ -26,7 +26,7 @@ install_dir = "~/.bashrc.d"
 ### Browse and Install Modules
 
 ```bash
-bash-mods
+bashmod
 ```
 
 ## Available Modules
