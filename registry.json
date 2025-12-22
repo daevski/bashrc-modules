@@ -3,7 +3,6 @@
   "modules": [
     {
       "id": "git-aliases",
-      "name": "Git Aliases",
       "description": "Git convenience aliases",
       "version": "0.1.0",
       "url": "https://raw.githubusercontent.com/raremonarch/bashrc-modules/main/modules/git-aliases.sh",
@@ -19,7 +18,6 @@
     },
     {
       "id": "git-ssh",
-      "name": "Git SSH Key Management",
       "description": "SSH key management for Git operations",
       "version": "0.1.0",
       "url": "https://raw.githubusercontent.com/raremonarch/bashrc-modules/main/modules/git-ssh.sh",
@@ -37,7 +35,6 @@
     },
     {
       "id": "git-clone",
-      "name": "Git Clone Helpers",
       "description": "Git repository cloning shortcuts for multiple remotes",
       "version": "0.1.0",
       "url": "https://raw.githubusercontent.com/raremonarch/bashrc-modules/main/modules/git-clone.sh",
@@ -58,7 +55,6 @@
     },
     {
       "id": "docker",
-      "name": "Docker Utils",
       "description": "Docker cleanup and management functions",
       "version": "0.1.0",
       "url": "https://raw.githubusercontent.com/raremonarch/bashrc-modules/main/modules/docker.sh",
@@ -75,7 +71,6 @@
     },
     {
       "id": "python",
-      "name": "Python Development",
       "description": "Python development helpers for poetry, pytest, and coverage",
       "version": "0.1.0",
       "url": "https://raw.githubusercontent.com/raremonarch/bashrc-modules/main/modules/python.sh",
@@ -95,7 +90,6 @@
     },
     {
       "id": "ssh-agent",
-      "name": "SSH Agent Manager",
       "description": "SSH agent management with automatic key loading for ssh and git",
       "version": "0.2.0",
       "url": "https://raw.githubusercontent.com/raremonarch/bashrc-modules/main/modules/ssh-agent.sh",
@@ -119,7 +113,6 @@
     },
     {
       "id": "ssh-host-manager",
-      "name": "SSH Host Manager",
       "description": "Centralized SSH host and key management with dynamic clone function generation",
       "version": "0.1.0",
       "url": "https://raw.githubusercontent.com/raremonarch/bashrc-modules/main/modules/ssh-host-manager.sh",
@@ -141,7 +134,6 @@
     },
     {
       "id": "aws-wrapper",
-      "name": "AWS CLI Wrapper",
       "description": "AWS CLI wrapper that auto-appends profile flag",
       "version": "0.1.0",
       "url": "https://raw.githubusercontent.com/raremonarch/bashrc-modules/main/modules/aws-wrapper.sh",
@@ -157,7 +149,6 @@
     },
     {
       "id": "aws-profile",
-      "name": "AWS Profile Manager",
       "description": "AWS profile management and SSO login helpers",
       "version": "0.1.0",
       "url": "https://raw.githubusercontent.com/raremonarch/bashrc-modules/main/modules/aws-profile.sh",
@@ -176,7 +167,6 @@
     },
     {
       "id": "aws-codeartifact",
-      "name": "AWS CodeArtifact",
       "description": "AWS CodeArtifact authentication utilities",
       "version": "0.1.0",
       "url": "https://raw.githubusercontent.com/raremonarch/bashrc-modules/main/modules/aws-codeartifact.sh",
@@ -192,7 +182,6 @@
     },
     {
       "id": "audio-switching",
-      "name": "Audio Switching",
       "description": "Audio device switching utilities",
       "version": "0.1.0",
       "url": "https://raw.githubusercontent.com/raremonarch/bashrc-modules/main/modules/audio-switching.sh",
@@ -206,7 +195,6 @@
     },
     {
       "id": "gh-cli-tool",
-      "name": "GitHub CLI Tools",
       "description": "GitHub CLI helper functions",
       "version": "0.1.0",
       "url": "https://raw.githubusercontent.com/raremonarch/bashrc-modules/main/modules/gh-cli-tool.sh",
@@ -220,7 +208,6 @@
     },
     {
       "id": "openssl_file_encryption",
-      "name": "OpenSSL File Encryption",
       "description": "File encryption and decryption using OpenSSL",
       "version": "0.1.0",
       "url": "https://raw.githubusercontent.com/raremonarch/bashrc-modules/main/modules/openssl_file_encryption.sh",
@@ -234,7 +221,6 @@
     },
     {
       "id": "pyenv",
-      "name": "Pyenv Setup",
       "description": "Pyenv initialization and configuration",
       "version": "0.1.0",
       "url": "https://raw.githubusercontent.com/raremonarch/bashrc-modules/main/modules/pyenv.sh",
@@ -248,7 +234,6 @@
     },
     {
       "id": "system-aliases",
-      "name": "System Aliases",
       "description": "Common system aliases and helper discovery function",
       "version": "0.1.0",
       "url": "https://raw.githubusercontent.com/raremonarch/bashrc-modules/main/modules/system-aliases.sh",
@@ -271,7 +256,6 @@
     },
     {
       "id": "system-config",
-      "name": "System Config Shortcuts",
       "description": "Configuration file editing shortcuts",
       "version": "0.1.0",
       "url": "https://raw.githubusercontent.com/raremonarch/bashrc-modules/main/modules/system-config.sh",
@@ -287,7 +271,6 @@
     },
     {
       "id": "system-package-manager",
-      "name": "Package Manager Utils",
       "description": "Package management utilities for Fedora DNF",
       "version": "0.1.0",
       "url": "https://raw.githubusercontent.com/raremonarch/bashrc-modules/main/modules/system-package-manager.sh",
@@ -306,7 +289,6 @@
     },
     {
       "id": "system-process-utils",
-      "name": "Process Utilities",
       "description": "Process management utilities and aliases",
       "version": "0.1.0",
       "url": "https://raw.githubusercontent.com/raremonarch/bashrc-modules/main/modules/system-process-utils.sh",
@@ -323,7 +305,6 @@
     },
     {
       "id": "system-reload",
-      "name": "Shell Reload",
       "description": "Shell reload utility",
       "version": "0.1.0",
       "url": "https://raw.githubusercontent.com/raremonarch/bashrc-modules/main/modules/system-reload.sh",
@@ -339,7 +320,6 @@
     },
     {
       "id": "system-usb",
-      "name": "USB Utilities",
       "description": "USB device formatting utilities",
       "version": "0.1.0",
       "url": "https://raw.githubusercontent.com/raremonarch/bashrc-modules/main/modules/system-usb.sh",
