@@ -58,12 +58,12 @@ function clone-repo () {
         echo "Usage: clone-repo <owner> <repo-name>"
         echo "Examples:"
         echo "  clone-repo raremonarch bashmod"
-        echo "    -> git@github.com:raremonarch/bashmod.git"
-        echo "    -> ~/code/raremonarch/bashmod (if SSH host configured)"
+        echo "    -> git@raremonarch:raremonarch/bashmod.git (uses SSH host alias)"
+        echo "    -> ~/code/raremonarch/bashmod"
         echo ""
         echo "  clone-repo EBSCOIS platform.shared.bookjacket-image-resolver"
-        echo "    -> git@github.com:EBSCOIS/platform.shared.bookjacket-image-resolver.git"
-        echo "    -> ~/code/ebscois/platform.shared.bookjacket-image-resolver (if SSH host configured)"
+        echo "    -> git@ebscois:EBSCOIS/platform.shared.bookjacket-image-resolver.git (uses SSH host alias)"
+        echo "    -> ~/code/ebscois/platform.shared.bookjacket-image-resolver"
         return 1
     fi
 
@@ -71,12 +71,11 @@ function clone-repo () {
     local repo_name="$2"
     local ssh_host=$(echo "$owner" | tr '[:upper:]' '[:lower:]')
 
-    # Always use git@github.com for GitHub repos
-    local git_url="git@github.com:${owner}/${repo_name}.git"
-
     # Check if there's a configured SSH host for this owner with a clone_dir
     local clone_dir=""
+    local has_ssh_host=false
     if grep -q "^Host $ssh_host$" "$HOME/.ssh/config" 2>/dev/null; then
+        has_ssh_host=true
         # Look for clone_dir in the managed comment above this host
         local in_block=false
         while IFS= read -r line; do
@@ -90,6 +89,14 @@ function clone-repo () {
                 break
             fi
         done < "$HOME/.ssh/config"
+    fi
+
+    # Use SSH host alias if configured, otherwise use github.com
+    local git_url
+    if [ "$has_ssh_host" = true ]; then
+        git_url="git@${ssh_host}:${owner}/${repo_name}.git"
+    else
+        git_url="git@github.com:${owner}/${repo_name}.git"
     fi
 
     # Determine clone path
