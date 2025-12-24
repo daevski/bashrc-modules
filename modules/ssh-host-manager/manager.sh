@@ -798,31 +798,6 @@ _ssh_host_remove_from_config() {
 
     # Use awk to remove the managed block for this host
     awk -v host="$host_alias" '
-        /^# Managed by ssh-host-manager$/ {
-            managed=1
-            buffer="# Managed by ssh-host-manager\n"
-            next
-        }
-
-        managed == 1 {
-            buffer = buffer $0 "\n"
-
-            if (/^Host /) {
-                if ($2 == host) {
-                    # This is the host to remove, skip this entire block
-                    skip=1
-                    buffer=""
-                } else {
-                    # Different host, print the buffer
-                    printf "%s", buffer
-                    buffer=""
-                    managed=0
-                    skip=0
-                }
-                next
-            }
-        }
-
         skip == 1 {
             # Skip lines until we hit an empty line or new Host/comment
             if (/^$/ || /^Host / || /^# Managed by/) {
@@ -833,7 +808,7 @@ _ssh_host_remove_from_config() {
                 # If this is the start of a new block, process it
                 if (/^# Managed by/) {
                     managed=1
-                    buffer="# Managed by ssh-host-manager\n"
+                    buffer=$0 "\n"
                     next
                 } else if (/^Host /) {
                     print
@@ -844,6 +819,32 @@ _ssh_host_remove_from_config() {
                 }
             }
             next
+        }
+
+        /^# Managed by ssh-host-manager/ {
+            managed=1
+            buffer=$0 "\n"
+            next
+        }
+
+        managed == 1 {
+            buffer = buffer $0 "\n"
+
+            if (/^Host /) {
+                if ($2 == host) {
+                    # This is the host to remove, skip this entire block
+                    skip=1
+                    managed=0
+                    buffer=""
+                } else {
+                    # Different host, print the buffer
+                    printf "%s", buffer
+                    buffer=""
+                    managed=0
+                    skip=0
+                }
+                next
+            }
         }
 
         { print }
