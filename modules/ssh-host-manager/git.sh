@@ -57,13 +57,13 @@ function clone-repo () {
     if [ -z "$1" ] || [ -z "$2" ]; then
         echo "Usage: clone-repo <owner> <repo-name>"
         echo "Examples:"
-        echo "  clone-repo EBSCOIS platform.shared.bookjacket-image-resolver"
-        echo "    -> git@ebscois:EBSCOIS/platform.shared.bookjacket-image-resolver.git"
-        echo "    -> ${CODE_BASE_DIR}/platform.shared.bookjacket-image-resolver"
+        echo "  clone-repo raremonarch bashmod"
+        echo "    -> git@github.com:raremonarch/bashmod.git"
+        echo "    -> ~/code/raremonarch/bashmod (if SSH host configured)"
         echo ""
-        echo "  clone-repo daevski my-personal-project"
-        echo "    -> git@daevski:daevski/my-personal-project.git"
-        echo "    -> ${CODE_BASE_DIR}/my-personal-project"
+        echo "  clone-repo EBSCOIS platform.shared.bookjacket-image-resolver"
+        echo "    -> git@github.com:EBSCOIS/platform.shared.bookjacket-image-resolver.git"
+        echo "    -> ~/code/ebscois/platform.shared.bookjacket-image-resolver (if SSH host configured)"
         return 1
     fi
 
@@ -71,8 +71,38 @@ function clone-repo () {
     local repo_name="$2"
     local ssh_host=$(echo "$owner" | tr '[:upper:]' '[:lower:]')
 
-    local git_url="git@${ssh_host}:${owner}/${repo_name}.git"
-    local clone_path="${CODE_BASE_DIR}/${repo_name}"
+    # Always use git@github.com for GitHub repos
+    local git_url="git@github.com:${owner}/${repo_name}.git"
+
+    # Check if there's a configured SSH host for this owner with a clone_dir
+    local clone_dir=""
+    if grep -q "^Host $ssh_host$" "$HOME/.ssh/config" 2>/dev/null; then
+        # Look for clone_dir in the managed comment above this host
+        local in_block=false
+        while IFS= read -r line; do
+            if [[ "$line" =~ ^#\ Managed\ by\ ssh-host-manager.*org=${ssh_host} ]]; then
+                # Extract clone_dir from comment
+                if [[ "$line" =~ clone_dir=([^\)]+) ]]; then
+                    clone_dir="${BASH_REMATCH[1]}"
+                    clone_dir="${clone_dir/#\~/$HOME}"  # Expand tilde
+                fi
+            elif [[ "$line" =~ ^Host\ $ssh_host$ ]]; then
+                break
+            fi
+        done < "$HOME/.ssh/config"
+    fi
+
+    # Determine clone path
+    local clone_path
+    if [ -n "$clone_dir" ]; then
+        clone_path="${clone_dir}/${repo_name}"
+    else
+        clone_path="${CODE_BASE_DIR}/${repo_name}"
+    fi
+
+    echo "Cloning ${owner}/${repo_name}..."
+    echo "  URL: $git_url"
+    echo "  Path: $clone_path"
 
     ssh_load_key_for_url "$git_url" && command git clone "$git_url" "$clone_path"
 }
