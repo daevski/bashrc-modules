@@ -271,6 +271,20 @@
         ],
         "variables": []
       }
+    },
+    {
+      "id": "bak-file",
+      "description": "Backup and restore files with .bak extension",
+      "version": "0.1.0",
+      "url": "https://raw.githubusercontent.com/raremonarch/bashrc-modules/main/modules/bak-file.sh",
+      "category": "system",
+      "exports": {
+        "aliases": [],
+        "functions": [
+          "bak"
+        ],
+        "variables": []
+      }
     }
   ]
 }
